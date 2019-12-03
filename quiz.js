@@ -2,7 +2,9 @@ var startGame = document.getElementById("start")
 var totalSeconds = 0
 var timeElapsed = 0
 var quizArea = document.getElementById("quizArea")
-var listItem = document.createElement("li")
+var radio1 = document.getElementById("radio1")
+
+
 var questions = [
     { title: "Commonly used data types DO NOT include:",
     choices: ["strings", "booleans", "alerts", "numbers"],
