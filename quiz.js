@@ -6,10 +6,10 @@ var radio1 = document.getElementById("radio1")
 var radio2 = document.getElementById("radio2")
 var radio3 = document.getElementById("radio3")
 var radio4 = document.getElementById("radio4")
-var radio1 = document.getElementById("radio1")
-var radio1 = document.getElementById("radio1")
-var radio1 = document.getElementById("radio1")
-var radio1 = document.getElementById("radio1")
+var radio1 = document.getElementById("label1")
+var radio1 = document.getElementById("label2")
+var radio1 = document.getElementById("label3")
+var radio1 = document.getElementById("label4")
 
 
 var questions = [
@@ -30,8 +30,7 @@ startGame.addEventListener("click", function(){
   quizArea.classList.remove("d-none")
 
   quizArea.textContent = questions[0].title
-  quizArea.appendChild(listItem)
-  quizArea.querySelector("li").textContent = questions[0].choices;
+  radio1.textContent = questions[0].choices[0]
 
 }
 )
