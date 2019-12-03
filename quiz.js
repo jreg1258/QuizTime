@@ -3,6 +3,13 @@ var totalSeconds = 0
 var timeElapsed = 0
 var quizArea = document.getElementById("quizArea")
 var radio1 = document.getElementById("radio1")
+var radio2 = document.getElementById("radio2")
+var radio3 = document.getElementById("radio3")
+var radio4 = document.getElementById("radio4")
+var radio1 = document.getElementById("radio1")
+var radio1 = document.getElementById("radio1")
+var radio1 = document.getElementById("radio1")
+var radio1 = document.getElementById("radio1")
 
 
 var questions = [
