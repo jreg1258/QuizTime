@@ -11,12 +11,46 @@
 <body>
     <div class="container">
         <div class="row">
-                <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-        <button type="button" class="btn btn-primary btn-lg">Start Quiz!</button>
-            </div>
-                <div class="col-lg-4"></div>
+                <div class="col-sm-10"></div>
+                
+                    <div class="col-sm-2" id="timer">
+                        <div>Time Left: 180</div>
+                    </div>    
         </div>
+
+        <div class="row">
+            <div class="col-lg"></div>
+        <button type="button" class="btn btn-primary btn-lg" id="start">Start Quiz!</button>
+                <form class="col-lg-6, d-none" id="quizArea">
+                        <div class="form-check">
+                                <input class="form-check-input" type="radio" id="radio1">
+                                    <label class="form-check-label" for="radios1" id="label1">
+                                    </label>
+                              </div>
+                        <div class="form-check">
+                                <input class="form-check-input" type="radio" id="radios2">
+                                    <label class="form-check-label" for="radios2" id="label2">
+                                    </label>
+                        <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="radio1">
+                                        <label class="form-check-label" for="radios1" id="label3">
+                                </label>
+                              </div>
+                        <div class="form-check">
+                                <input class="form-check-input" type="radio" id="radios2">
+                               <label class="form-check-label" for="radios2" id="label4">
+                                </label>
+                
+                </form>       
+        
+        <div class="col-lg"></div>
+        </div>
+
+
     </div>
+
+
+
+    <script src="quiz.js"></script>
 </body>
 </html>
