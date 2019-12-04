@@ -19,32 +19,38 @@
         </div>
 
         <div class="row">
-        <button type="button" class="btn btn-primary btn-lg" id="start">Start Quiz!</button>
+            <button type="button" class="btn btn-primary btn-lg" id="start">Start Quiz!</button>
+            <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+                    <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+                  </div>
+                  <div class="custom-control custom-radio mb-3">
+                    <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+                    <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+                    <div class="invalid-feedback">More example invalid feedback text</div>
+                  </div>
                 <form class="col-lg-6, d-none" id="quizArea">
                     <label for="quizArea" id="quesLabel"></label>
+                       
                         <div class="form-check">
-                                <input class="form-check-input" type="radio" id="radio1">
-                                    <label class="form-check-label" for="radio1" id="label1">
-                                    </label>
+                                <input class="custom-control-input" type="radio" id="radio1" required>
+                                    <label class="form-check-label" for="radio1" id="label1"></label>
                               </div>
                         <div class="form-check">
-                                <input class="form-check-input" type="radio" id="radio2">
-                                    <label class="form-check-label" for="radio2" id="label2">test
-                                    </label>
+                                <input class="custom-control-input" type="radio" id="radio2" required>
+                                    <label class="form-check-label" for="radio2" id="label2">test</label>
                         </div>
                         <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="radio3">
-                                        <label class="form-check-label" for="radio3" id="label3">test
-                                </label>
+                                        <input class="custom-control-input" type="radio" id="radio3" required>
+                                            <label class="form-check-label" for="radio3" id="label3">test</label>
                               </div>
                         <div class="form-check">
-                                <input class="form-check-input" type="radio" id="radio4">
-                               <label class="form-check-label" for="radio4" id="label4">test
-                                </label>
+                                <input class="custom-control-input" type="radio" id="radio4" required>
+                                    <label class="form-check-label" for="radio4" id="label4">test</label>
                         </div>
                         <div>
                             <button type="button" class="btn btn-primary btn-lg" id="next">Next</button>
-                    </div>
+                        </div>
                 
                 </form>       
         

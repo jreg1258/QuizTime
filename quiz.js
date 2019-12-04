@@ -41,14 +41,13 @@ startGame.addEventListener("click", function(){
   label2.textContent = questions[0].choices[1]
   label3.textContent = questions[0].choices[2]
   label4.textContent = questions[0].choices[3]
-
-  localStorage.add()
 }
 )
 
 next.addEventListener("click", function() {
-  
-
+  if (radios === null) {
+    alert("Stop there!")
+  }
 
 })
 
