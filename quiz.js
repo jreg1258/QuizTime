@@ -2,6 +2,7 @@ var startGame = document.getElementById("start")
 var next = document.getElementById("next")
 var totalSeconds = 0
 var timeElapsed = 0
+var completeTxt = document.getElementById("complete")
 var quizArea = document.getElementById("quizArea")
 var titleArea = document.getElementById("titleArea")
 var radio1 = document.getElementById("radio1")
@@ -31,7 +32,7 @@ var questions = [
   }
 ]
 
-var quesNum = 0
+var quesNum = 0 
 
 startGame.addEventListener("click", function(){
 
@@ -46,27 +47,37 @@ startGame.addEventListener("click", function(){
   label4.textContent = questions[quesNum].choices[3]
 }
 )
-next.addEventListener("click", function() {
-  if(quesNum < questions.length) {
-    for (var i = 0; i < radios.length; i++)
-            {if (radios[i].checked) 
-              {var guess = labels[i].textContent
-                localStorage.setItem("answer", guess)
-                console.log(guess)
-                quesNum++
-                quesLabel.textContent = questions[quesNum].title
+
+  
+  
+function checkRadios() {
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      var guess = labels[i].textContent
+    localStorage.setItem("answer", guess)
+    console.log(guess)
+    radios[i].checked = false
+    event.preventDefault()}}
+}
+
+function checkQues() {
+   if(quesNum < questions.length) {
+        quesNum++
+        console.log(quesNum)
+        quesLabel.textContent = questions[quesNum].title
                 label1.textContent = questions[quesNum].choices[0]
                 label2.textContent = questions[quesNum].choices[1]
                 label3.textContent = questions[quesNum].choices[2]
                 label4.textContent = questions[quesNum].choices[3]
-                radios[i].checked = false
-                event.preventDefault()
-              } 
-              }} else if (quesNum === questions.length) {
-                event.preventDefault()
-                alert("done")
-        
-              }
-            })
-
-console.log(radios)
+   }}
+   
+next.addEventListener("click", function() {    
+            checkRadios()
+            checkQues() 
+            if (quesNum===questions.length){
+              quizArea.classList.add("d-none")
+              completeTxt.classList.remove("d-none")
+            }
+                
+            
+          })
