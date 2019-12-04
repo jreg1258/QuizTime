@@ -31,24 +31,42 @@ var questions = [
   }
 ]
 
+var quesNum = 0
+
 startGame.addEventListener("click", function(){
 
   startGame.classList.add("d-none")
   quizArea.classList.remove("d-none")
+  quizArea.classList.add("needs-validation")
 
-  quesLabel.textContent = questions[0].title
-  label1.textContent = questions[0].choices[0]
-  label2.textContent = questions[0].choices[1]
-  label3.textContent = questions[0].choices[2]
-  label4.textContent = questions[0].choices[3]
+  quesLabel.textContent = questions[quesNum].title
+  label1.textContent = questions[quesNum].choices[0]
+  label2.textContent = questions[quesNum].choices[1]
+  label3.textContent = questions[quesNum].choices[2]
+  label4.textContent = questions[quesNum].choices[3]
 }
 )
-
 next.addEventListener("click", function() {
-  if (radios === null) {
-    alert("Stop there!")
-  }
-
-})
+  if(quesNum < questions.length) {
+    for (var i = 0; i < radios.length; i++)
+            {if (radios[i].checked) 
+              {var guess = labels[i].textContent
+                localStorage.setItem("answer", guess)
+                console.log(guess)
+                quesNum++
+                quesLabel.textContent = questions[quesNum].title
+                label1.textContent = questions[quesNum].choices[0]
+                label2.textContent = questions[quesNum].choices[1]
+                label3.textContent = questions[quesNum].choices[2]
+                label4.textContent = questions[quesNum].choices[3]
+                radios[i].checked = false
+                event.preventDefault()
+              } 
+              }} else if (quesNum === questions.length) {
+                event.preventDefault()
+                alert("done")
+        
+              }
+            })
 
 console.log(radios)
