@@ -2,9 +2,11 @@ var startGame = document.getElementById("start")
 var next = document.getElementById("next")
 var totalSeconds = 0
 var timeElapsed = 0
+var timer = document.getElementById("timer")
 var completeTxt = document.getElementById("complete")
 var quizArea = document.getElementById("quizArea")
 var titleArea = document.getElementById("titleArea")
+var invalid = document.getElementById("invalid")
 var radio1 = document.getElementById("radio1")
 var radio2 = document.getElementById("radio2")
 var radio3 = document.getElementById("radio3")
@@ -46,47 +48,73 @@ startGame.addEventListener("click", function(){
   label4.textContent = questions[quesNum].choices[3]
   localStorage.setItem("answer", questions[quesNum].answer)
   localStorage.setItem("score", 0)
+
+  totalSeconds = 180
+  display = timer
+  startTimer(totalSeconds,display)
+})
+
+function startTimer(duration, display) {
+  var timer = duration
+  var chkGuess = guess
+  var chkAns = ans
+
+  setInterval(function () {
+     
+   display.textContent = duration--;
+
+   if (--timer < 0) {
+          timer = duration;
+      } 
+  }, 1000);
 }
-)
+
+
+function checkAns() {
+  if (guess!==ans) {
+    event.preventDefault()
+    invalid.classList.add("d-none")
+  } else {quesNum++
+  checkQues()
+}}
 
 function checkRadios() {
   for (var i = 0; i < radios.length; i++) {
     if (radios[i].checked) {
         guess = labels[i].textContent
-          console.log(guess)
-          radios[i].checked = false
-          quesNum++
-      } else}
-}
+        console.log(guess)
+        checkAns()
+        radios[i].checked = false
+    }else if (!radios[i].checked) {
+        invalid.classList.remove("d-none")
+      }}}
+  
 
-function checkAns() {
-  if(guess===ans) {
-      score++
-      console.log(score)
-      localStorage.setItem("score", score)
-  }}
+
   
 
 function checkQues() {
   if(quesNum===questions.length){
     quizArea.classList.add("d-none")
     completeTxt.classList.remove("d-none")
-   } else { console.log(quesNum)
+   } else {
         quesLabel.textContent = questions[quesNum].title
         label1.textContent = questions[quesNum].choices[0]
         label2.textContent = questions[quesNum].choices[1]
         label3.textContent = questions[quesNum].choices[2]
         label4.textContent = questions[quesNum].choices[3] 
+        localStorage.setItem("answer", questions[quesNum].answer)
+        
       }
 }   
 
 next.addEventListener("click", function() {    
             
   checkRadios()
-  checkAns()
-  checkQues()
-          
-            event.preventDefault()
+  
+  event.preventDefault()
+
+
           })
 
           
