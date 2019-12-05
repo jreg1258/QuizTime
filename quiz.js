@@ -17,9 +17,6 @@ var label4 = document.getElementById("label4")
 var radios = [radio1,radio2,radio3,radio4]
 var labels = [label1, label2, label3, label4]
 
-
-
-
 var questions = [
     { title: "Commonly used data types DO NOT include:",
     choices: ["strings", "booleans", "alerts", "numbers"],
@@ -29,12 +26,12 @@ var questions = [
     title: "The condition in an if / else statement is enclosed within ____.",
     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
     answer: "parentheses"
-  }
-]
+  }]
 
 var quesNum = 0
-var guess = "" 
-var score = localStorage.setItem("score", 0)
+var score = 0
+var guess = ""
+var ans = questions[quesNum].answer
 
 startGame.addEventListener("click", function(){
 
@@ -47,20 +44,28 @@ startGame.addEventListener("click", function(){
   label2.textContent = questions[quesNum].choices[1]
   label3.textContent = questions[quesNum].choices[2]
   label4.textContent = questions[quesNum].choices[3]
+  localStorage.setItem("answer", questions[quesNum].answer)
+  localStorage.setItem("score", 0)
 }
 )
 
-  
-  
 function checkRadios() {
   for (var i = 0; i < radios.length; i++) {
     if (radios[i].checked) {
-          guess = labels[i].textContent
+        guess = labels[i].textContent
           console.log(guess)
           radios[i].checked = false
           quesNum++
-      }}
+      } else}
 }
+
+function checkAns() {
+  if(guess===ans) {
+      score++
+      console.log(score)
+      localStorage.setItem("score", score)
+  }}
+  
 
 function checkQues() {
   if(quesNum===questions.length){
@@ -72,21 +77,15 @@ function checkQues() {
         label2.textContent = questions[quesNum].choices[1]
         label3.textContent = questions[quesNum].choices[2]
         label4.textContent = questions[quesNum].choices[3] 
-        
-      }}   
-      
-function checkAns() {
-  if (guess===questions[quesNum].answer) {
-    newScore = parseInt(localStorage.getItem("score"))+1
-    score = newScore
-  }
-    
-}
-   
+      }
+}   
+
 next.addEventListener("click", function() {    
-            checkRadios()
-            checkAns()
-            checkQues() 
+            
+  checkRadios()
+  checkAns()
+  checkQues()
+          
             event.preventDefault()
           })
 
