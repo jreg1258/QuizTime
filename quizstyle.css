@@ -23,3 +23,24 @@
         margin-top: 15px
     }
 
+#headRow {
+    background-color: #17a2b8!important;
+}
+
+.pt-2, .p-1{
+    color: white;
+}
+
+#mainBody {
+    background-color: #f8f9fa!important;
+    padding: 20px;
+    padding-bottom: 70px;
+}
+
+html, body {
+    background-color:#6c757d!important
+}
+
+#complete {
+    color:#28a745!important;
+}
