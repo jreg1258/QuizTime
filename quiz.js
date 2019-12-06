@@ -46,6 +46,7 @@ startGame.addEventListener("click", function(){
 
   startGame.classList.add("d-none")
   showHigh.classList.add("d-none")
+  document.getElementById("highs").classList.add("d-none")
   quizArea.classList.remove("d-none")
   quizArea.classList.add("needs-validation")
 
@@ -172,4 +173,7 @@ highScore.addEventListener("click", function() {
 
 showHigh.addEventListener("click", function() {
   
+  document.getElementById("highs").classList.remove("d-none")
+
+  document.getElementById("highs").textContent = localStorage.getItem("highScores")
 })
