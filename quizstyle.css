@@ -1,4 +1,20 @@
-div {
-    margin: auto;
-}
+#start {
+    margin: 10px 
+    }
+    
+#showHigh {
+        margin: 10px
+    }
 
+#highs {
+        margin: auto
+    }
+
+#highName {
+        margin-left: -20px;
+        margin-bottom: 10px;
+    }
+    
+#high {
+        margin-left: -5px;
+    }
