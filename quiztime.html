@@ -20,7 +20,10 @@
 
         <div class="row">
             <button type="button" class="btn btn-primary btn-lg" id="start">Start Quiz!</button>
-            
+            <button type="button" class="btn btn-primary btn-lg" id="showHigh">Show Last High Score</button>
+
+            <p id="highs"
+
                 <form class="col-lg-6, d-none" id="quizArea" name="quizArea" novalidate>
                     <label for="quizArea" id="quesLabel"></label>
                        
@@ -41,14 +44,24 @@
                                     <label class="custom-control-label" for="radio4" id="label4"></label>
                         </div>
 
-                        <div class="invalid-feedback, d-none" id="invalid">More example invalid feedback text</div>
+                        <div class="invalid-feedback, d-none" id="invalid">invalid.</div>
 
                         <div>
                             <button type="submit" class="btn btn-primary btn-lg" id="next">Next</button>
                         </div>
                 </form>       
 
-                <p class="col-lg-6, d-none" id="complete">Complete!</p>
+                <form class="col-lg-6, form-inline, d-none" id="complete">Complete!
+                        <div class="form-group mb-2">
+                          <label for="staticScore" class="sr-only">Score: <span id="score"></span> </label>
+                          <input type="text" readonly class="form-control-plaintext" id="staticScore" value="">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                          <label for="inputPassword2" class="sr-only"></label>
+                          <input type="text" class="form-control" placeholder="Leave Initals Here" id="highName" value=""></input>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2" id="high">Log High Score</button>
+                      </form>
         
         <div class="col-lg"></div>
         </div>

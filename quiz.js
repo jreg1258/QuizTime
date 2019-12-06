@@ -1,4 +1,5 @@
 var startGame = document.getElementById("start")
+var showHigh = document.getElementById("showHigh")
 var next = document.getElementById("next")
 var totalSeconds = 0
 var timeElapsed = 0
@@ -16,6 +17,9 @@ var label1 = document.getElementById("label1")
 var label2 = document.getElementById("label2")
 var label3 = document.getElementById("label3")
 var label4 = document.getElementById("label4")
+var staticScore = document.getElementById("staticScore")
+var highScore = document.getElementById("high")
+var highName = document.getElementById("highName")
 
 var radios = [radio1,radio2,radio3,radio4]
 var labels = [label1, label2, label3, label4]
@@ -36,9 +40,12 @@ var score = 0
 var guess = ""
 var ans = questions[quesNum].answer
 
+
+
 startGame.addEventListener("click", function(){
 
   startGame.classList.add("d-none")
+  showHigh.classList.add("d-none")
   quizArea.classList.remove("d-none")
   quizArea.classList.add("needs-validation")
 
@@ -78,9 +85,8 @@ function checkRadios() {
         checkAns()
         console.log("hey")
         radios[i].checked = false
-    }else if (!radios[i].checked) {
-        invalid.classList.remove("d-none")
-      }}}
+    }
+    }}
 
 
   
@@ -88,18 +94,25 @@ function checkAns() {
         if (guess!==ans) {
           event.preventDefault()
           invalid.classList.remove("d-none")
-        }
+        } else {
           quesNum++
           checkQues()
-        }
+        }}
 
 
 
+function logScore() {
+  document.getElementById("score").textContent = totalSeconds
+  staticScore.setAttribute("value", "Score: " + totalSeconds)
+  event.preventDefault()
+}
 
 function checkQues() {
   if(quesNum===questions.length){
     quizArea.classList.add("d-none")
     completeTxt.classList.remove("d-none")
+    clearInterval(clock)
+    logScore()
    } else {
     
         quesLabel.textContent = questions[quesNum].title
@@ -137,11 +150,26 @@ if (guess!==ans) {
   event.preventDefault()
 
           })
-
-          
-quizArea.addEventListener("change", function() {
-
-  hideInvalid()
-
-})
                 
+
+    
+highScore.addEventListener("click", function() {
+  localStorage.setItem("highScores","")
+  highName.setAttribute("value",highName.value)
+
+  console.log(highName.getAttribute("value"))
+  var existingEntries = localStorage.getItem("highScores")
+    var entryTitle = highName.value
+    var entryText = staticScore.getAttribute("value")
+          var hallFame = {
+            "name" : entryTitle,
+            "score" : entryText
+          }
+          localStorage.setItem("highScores", JSON.stringify(hallFame))
+          // Save allEntries back to local storage
+          
+})
+
+showHigh.addEventListener("click", function() {
+  
+})
