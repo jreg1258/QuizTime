@@ -11,6 +11,7 @@ var staticScore = document.getElementById("staticScore")
 var setHighScore = document.getElementById("high")
 var highName = document.getElementById("highName")
 //buttons, text and timer elements 
+
 var radio1 = document.getElementById("radio1")
 var radio2 = document.getElementById("radio2")
 var radio3 = document.getElementById("radio3")
@@ -20,9 +21,11 @@ var label2 = document.getElementById("label2")
 var label3 = document.getElementById("label3")
 var label4 = document.getElementById("label4")
 //radios and labels
+
 var radios = [radio1,radio2,radio3,radio4]
 var labels = [label1, label2, label3, label4]
 //radios and labels arrays
+
 var totalSeconds = 0
 var timeElapsed = 0
 var clock = null
@@ -31,7 +34,6 @@ var score = 0
 var guess = ""
 var ans = questions[quesNum].answer
 //function variables
-
 
 var questions = [
     { title: "Commonly used data types DO NOT include:",
@@ -59,21 +61,22 @@ var questions = [
     answer: "function"
   },
   ]
-
-
-
-
-
-
-
-
+//quiz questions
 
 
 
 function hideInvalid() {
   invalid.classList.add("d-none")
 }
+//hide invalid text
 
+
+function logScore() {
+  document.getElementById("score").textContent = totalSeconds
+  staticScore.setAttribute("value", "Score: " + totalSeconds)
+  event.preventDefault()
+}
+//log score
 
 
 function startTimer(duration) {
@@ -90,42 +93,8 @@ function startTimer(duration) {
     } 
   }, 1000);
 }
-
 //start the quiz, show the quiz, and start timer ^
 
-
-
-
-
-function checkRadios() {
-  for (var i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-        guess = labels[i].textContent
-        console.log(guess)
-        checkAns()
-        console.log("hey")
-        radios[i].checked = false
-    }
-    }}
-
-
-  
-function checkAns() {
-        if (guess!==ans) {
-          event.preventDefault()
-          invalid.classList.remove("d-none")
-        } else {
-          quesNum++
-          checkQues()
-        }}
-
-
-
-function logScore() {
-  document.getElementById("score").textContent = totalSeconds
-  staticScore.setAttribute("value", "Score: " + totalSeconds)
-  event.preventDefault()
-}
 
 function checkQues() {
   if(quesNum===questions.length){
@@ -145,9 +114,30 @@ function checkQues() {
         hideInvalid()
       }
 }   
+//check if there are any more questions, if not, show complete page and show timer value as score
+
+
+function checkAns() {
+  if (guess!==ans) {
+    event.preventDefault()
+    invalid.classList.remove("d-none")
+  } else {
+    quesNum++
+    checkQues()
+  }}
+//verify if answer is correct, then increase question number
 
 
 
+function checkRadios() {
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+        guess = labels[i].textContent
+        checkAns()
+        radios[i].checked = false
+    }
+    }}
+//verify a radio has been checked, then log the corresponding labels text as the guess
 
 
 
