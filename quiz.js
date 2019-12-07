@@ -91,8 +91,13 @@ function startTimer(duration) {
   return setInterval(function () {
    timer.textContent = duration--;
 
-   if (duration === 0) {
+   if (duration <= 0) {
       clearInterval(clock)
+      timer.textContent = 0
+      totalSeconds = 0
+      quizArea.classList.add("d-none")
+    completeTxt.classList.remove("d-none")
+    logScore()
     } 
   }, 1000);
 }
