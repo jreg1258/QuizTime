@@ -83,13 +83,13 @@ startGame.addEventListener("click", function(){
   localStorage.setItem("answer", questions[quesNum].answer)
   localStorage.setItem("score", 0)
 
-  totalSeconds = 180
+  totalSeconds = 181
   clock = startTimer(totalSeconds)
 })
 
 function startTimer(duration) {
   return setInterval(function () {
-   timer.textContent = duration--;
+   timer.textContent = --duration;
 
    if (duration <= 0) {
       clearInterval(clock)
