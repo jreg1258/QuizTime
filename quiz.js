@@ -33,7 +33,32 @@ var questions = [
     title: "The condition in an if / else statement is enclosed within ____.",
     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
     answer: "parentheses"
-  }]
+  },
+  {
+    title: "What is the HTML tag under which one can write the JavaScript code?",
+    choices: ["<javascript>", "<script>", "</scripted>", "<js>"],
+    answer: "<script>"
+  },
+  {
+    title: "Which of the following is the correct syntax to display “Joey Rocks!” in an alert box using JavaScript?",
+    choices: ["alertbox(“Joey Rocks!”)", "msg(“Joey Rocks!”)","msgbox(“Joey Rocks!”)", "alert(“Joey Rocks!”)"],
+    answer: "alert(“Joey Rocks!”)"
+  },
+  {
+    title: "Which is NOT a method of declaring a variable?",
+    choices: ["function", "const", "let", "var"],
+    answer: "function"
+  },
+  ]
+
+
+
+
+
+
+
+
+
 
 var quesNum = 0
 var score = 0
@@ -174,6 +199,9 @@ highScore.addEventListener("click", function() {
 showHigh.addEventListener("click", function() {
   
   document.getElementById("highs").classList.remove("d-none")
-
-  document.getElementById("highs").textContent = localStorage.getItem("highScores")
+var scoreArea = document.getElementById("highs")
+var scoreGet = localStorage.getItem("highScores")
+var scoreArr = JSON.stringify(JSON.parse(scoreGet))
+scoreArea.textContent = scoreArr
+  
 })
