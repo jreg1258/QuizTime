@@ -2,14 +2,15 @@ var startGame = document.getElementById("start")
 var showHigh = document.getElementById("showHigh")
 var next = document.getElementById("next")
 var startOver = document.getElementById("startOver")
-var totalSeconds = 0
-var timeElapsed = 0
-var clock = null
 var timer = document.getElementById("timer")
 var completeTxt = document.getElementById("complete")
 var quizArea = document.getElementById("quizArea")
 var titleArea = document.getElementById("titleArea")
 var invalid = document.getElementById("invalid")
+var staticScore = document.getElementById("staticScore")
+var setHighScore = document.getElementById("high")
+var highName = document.getElementById("highName")
+//buttons, text and timer elements 
 var radio1 = document.getElementById("radio1")
 var radio2 = document.getElementById("radio2")
 var radio3 = document.getElementById("radio3")
@@ -18,12 +19,19 @@ var label1 = document.getElementById("label1")
 var label2 = document.getElementById("label2")
 var label3 = document.getElementById("label3")
 var label4 = document.getElementById("label4")
-var staticScore = document.getElementById("staticScore")
-var highScore = document.getElementById("high")
-var highName = document.getElementById("highName")
-
+//radios and labels
 var radios = [radio1,radio2,radio3,radio4]
 var labels = [label1, label2, label3, label4]
+//radios and labels arrays
+var totalSeconds = 0
+var timeElapsed = 0
+var clock = null
+var quesNum = 0
+var score = 0
+var guess = ""
+var ans = questions[quesNum].answer
+//function variables
+
 
 var questions = [
     { title: "Commonly used data types DO NOT include:",
@@ -61,32 +69,12 @@ var questions = [
 
 
 
-var quesNum = 0
-var score = 0
-var guess = ""
-var ans = questions[quesNum].answer
+
+function hideInvalid() {
+  invalid.classList.add("d-none")
+}
 
 
-
-startGame.addEventListener("click", function(){
-
-  startGame.classList.add("d-none")
-  showHigh.classList.add("d-none")
-  document.getElementById("highs").classList.add("d-none")
-  quizArea.classList.remove("d-none")
-  quizArea.classList.add("needs-validation")
-
-  quesLabel.textContent = questions[quesNum].title
-  label1.textContent = questions[quesNum].choices[0]
-  label2.textContent = questions[quesNum].choices[1]
-  label3.textContent = questions[quesNum].choices[2]
-  label4.textContent = questions[quesNum].choices[3]
-  localStorage.setItem("answer", questions[quesNum].answer)
-  localStorage.setItem("score", 0)
-
-  totalSeconds = 181
-  clock = startTimer(totalSeconds)
-})
 
 function startTimer(duration) {
   return setInterval(function () {
@@ -160,45 +148,53 @@ function checkQues() {
 
 
 
-function hideInvalid() {
-  invalid.classList.add("d-none")
-}
 
 
 
 
+startGame.addEventListener("click", function(){
+
+  startGame.classList.add("d-none")
+  showHigh.classList.add("d-none")
+  document.getElementById("highs").classList.add("d-none")
+  quizArea.classList.remove("d-none")
+  quizArea.classList.add("needs-validation")
+
+  quesLabel.textContent = questions[quesNum].title
+  label1.textContent = questions[quesNum].choices[0]
+  label2.textContent = questions[quesNum].choices[1]
+  label3.textContent = questions[quesNum].choices[2]
+  label4.textContent = questions[quesNum].choices[3]
+  localStorage.setItem("answer", questions[quesNum].answer)
+  localStorage.setItem("score", 0)
+
+  totalSeconds = 181
+  clock = startTimer(totalSeconds)
+})
 
 next.addEventListener("click", function() {    
-            
   checkRadios()
-
-
-if (guess!==ans) {
-    clearInterval(clock)
-    var timer3 = parseInt(timer.textContent.trim())
-    totalSeconds = timer3 - 12
-    clock = startTimer(totalSeconds,timer)
+      if (guess!==ans) {
+        clearInterval(clock)
+        var timer3 = parseInt(timer.textContent.trim())
+        totalSeconds = timer3 - 12
+        clock = startTimer(totalSeconds,timer)
   }
   event.preventDefault()
-
-          })
+})
                 
 
     
-highScore.addEventListener("click", function() {
+setHighScore.addEventListener("click", function() {
   localStorage.setItem("highScores","")
   highName.setAttribute("value",highName.value)
-
-  console.log(highName.getAttribute("value"))
     var entryTitle = highName.value
     var entryText = staticScore.getAttribute("value")
-          var hallFame = {
-            "name" : entryTitle,
-            "score" : entryText
-          }
-          localStorage.setItem("highScores", JSON.stringify(hallFame))
-          // Save allEntries back to local storage
-          
+    var hallFame = {
+       "name" : entryTitle,
+       "score" : entryText
+    }
+  localStorage.setItem("highScores", JSON.stringify(hallFame))       
 })
 
 showHigh.addEventListener("click", function() {
