@@ -1,6 +1,7 @@
 var startGame = document.getElementById("start")
 var showHigh = document.getElementById("showHigh")
 var next = document.getElementById("next")
+var startOver = document.getElementById("startOver")
 var totalSeconds = 0
 var timeElapsed = 0
 var clock = null
@@ -189,7 +190,6 @@ highScore.addEventListener("click", function() {
   highName.setAttribute("value",highName.value)
 
   console.log(highName.getAttribute("value"))
-  var existingEntries = localStorage.getItem("highScores")
     var entryTitle = highName.value
     var entryText = staticScore.getAttribute("value")
           var hallFame = {
@@ -204,9 +204,16 @@ highScore.addEventListener("click", function() {
 showHigh.addEventListener("click", function() {
   
   document.getElementById("highs").classList.remove("d-none")
-var scoreArea = document.getElementById("highs")
-var scoreGet = localStorage.getItem("highScores")
-var scoreArr = JSON.stringify(JSON.parse(scoreGet))
-scoreArea.textContent = scoreArr
-  
+  var scoreArea = document.getElementById("highs")
+  var scoreGet = localStorage.getItem("highScores")
+  var scoreArr = JSON.stringify(JSON.parse(scoreGet))
+  scoreArea.textContent = scoreArr
+})
+
+
+startOver.addEventListener("click", function() {
+  completeTxt.classList.add("d-none")
+  startGame.classList.remove("d-none")
+  showHigh.classList.remove("d-none")
+  document.getElementById("highs").classList.remove("d-none")
 })
