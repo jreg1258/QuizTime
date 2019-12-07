@@ -91,7 +91,7 @@ function startTimer(duration) {
   return setInterval(function () {
    timer.textContent = --duration;
 
-   if (duration <= 0) {
+   if (duration < 0) {
       clearInterval(clock)
       timer.textContent = 0
       totalSeconds = 0
